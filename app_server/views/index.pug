@@ -1,5 +1,17 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  main
+    section
+      h1 God List 
+      each god in gods 
+        p
+        strong Name:  #{god.name} <br>
+        strong  Title:  #{god.title} <br>
+        strong  Boons: <br>
+        ul
+          each boon in god.boons
+            li #{boon}
+    section 
+      h1 Add God
+          

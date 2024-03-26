@@ -5,8 +5,11 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
 import indexRouter from './app_server/routes/index';
+import apiRouter from './app_server/routes/api';
 
 const app = express();
+
+require('./app_server/models/db');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'app_server', 'views'));
@@ -19,6 +22,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/api', apiRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req: Request, res: Response, next: NextFunction) {
